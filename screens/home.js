@@ -112,7 +112,7 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.headingCon}>
         <Text style={styles.catogary}>GIFTS</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("AddPost")}>
           <View style={styles.addCon}>
             <MaterialIcons
               name="add"
@@ -120,6 +120,7 @@ export default function Home({ navigation }) {
               style={styles.modalToggle}
               onPress={() => setModalOpen(true)}
             />
+
             <Text style={styles.addPost}>Add post</Text>
           </View>
         </TouchableOpacity>

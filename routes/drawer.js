@@ -5,14 +5,19 @@ import AboutStack from "./aboutStack";
 import HomeStack from "./homeStack";
 import LoginStack from "./loginStack";
 
-const RootDrawerNavigator = createDrawerNavigator({
-  // screen: LoginStack,
-  Home: {
-    screen: HomeStack,
+const RootDrawerNavigator = createDrawerNavigator(
+  {
+    // screen: LoginStack,
+    Home: {
+      screen: HomeStack,
+    },
+    About: {
+      screen: AboutStack,
+    },
   },
-  About: {
-    screen: AboutStack,
-  },
-});
+  {
+    drawerBackgroundColor: "#262A2C",
+  }
+);
 
 export default createAppContainer(RootDrawerNavigator);

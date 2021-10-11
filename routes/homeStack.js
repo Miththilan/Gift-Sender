@@ -5,6 +5,7 @@ import ReviewDetails from "../screens/reviewDetails";
 import Header from "../shared/header";
 import { ReviewForm } from "../screens/reviewForm";
 import { Register } from "../screens/register";
+import { AddPost } from "../screens/addPost";
 
 import React from "react";
 const screens = {
@@ -16,6 +17,12 @@ const screens = {
   },
   Register: {
     screen: Register,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  AddPost: {
+    screen: AddPost,
     navigationOptions: {
       headerShown: false,
     },

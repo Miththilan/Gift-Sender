@@ -57,13 +57,23 @@ export const ReviewForm = ({ addReview, navigation }) => (
           <Text style={globalStyles.errorText}>{errors.password}</Text>
 
           <View>
-            <FlatButton
-              onPress={() => {
-                handleSubmit;
-                navigation.navigate("Home");
-              }}
-              text="submit"
-            />
+            {errors.email && errors.password && (
+              <FlatButton
+                onPress={() => {
+                  handleSubmit;
+                }}
+                text="submit"
+              />
+            )}
+            {!errors.email && !errors.password && (
+              <FlatButton
+                onPress={() => {
+                  handleSubmit;
+                  navigation.navigate("Home");
+                }}
+                text="submit"
+              />
+            )}
           </View>
         </View>
         <View style={{ justifyContent: "center", flexDirection: "row" }}>
@@ -87,7 +97,7 @@ export const ReviewForm = ({ addReview, navigation }) => (
           <Text>New User?</Text>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Register");
+              navigation.navigate("Register"), console.log(errors.email);
             }}
           >
             <Text
