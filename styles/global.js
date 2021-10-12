@@ -20,7 +20,7 @@ export const globalStyles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     borderRadius: 6,
-    // margin: 5,
+    margin: 5,
   },
   errorText: {
     color: "crimson",

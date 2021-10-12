@@ -1,5 +1,5 @@
 // Formik x React Native example
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -14,16 +14,14 @@ import * as yup from "yup";
 import FlatButton from "../shared/button.js";
 import { auth } from "../firebase/firebase";
 
-const reviewSchema = yup.object({
-  email: yup.string().email("Invalid email").required().min(4),
-  password: yup.string().required().min(8),
-});
-
 export function ReviewForm({ addReview, navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = () => {
     auth
 
-      .signInWithEmailAndPassword(values.email, values.password)
+      .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
 
@@ -42,105 +40,70 @@ export function ReviewForm({ addReview, navigation }) {
     return person;
   }, []);
   return (
-    <Formik
-      initialValues={{ email: "", password: "" }}
-      validationSchema={reviewSchema}
-      onSubmit={(values) => {
-        addReview(values);
-        // actions.resetForm();
-        // console.log(errors);
-      }}
-    >
-      {({
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        values,
-        errors,
-        touched,
-      }) => (
+    <View>
+      <View style={styles.container}>
+        <Image
+          source={require("../assets/gift.png")}
+          style={styles.headerImage}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={globalStyles.input}
+          onChangeText={(e) => setEmail(e)}
+          value={email}
+          placeholder="Email"
+        />
+
+        {/* <Text style={globalStyles.errorText}>{errors.email}</Text> */}
+        <TextInput
+          style={globalStyles.input}
+          onChangeText={(e) => setPassword(e)}
+          // onBlur={handleBlur("password")}
+          value={password}
+          placeholder="Password"
+        />
+        {/* <Text style={globalStyles.errorText}>{errors.password}</Text> */}
+
         <View>
-          <View style={styles.container}>
-            <Image
-              source={require("../assets/gift.png")}
-              style={styles.headerImage}
-            />
-          </View>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={globalStyles.input}
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
-              value={values.email}
-              placeholder="Email"
-            />
+          <FlatButton onPress={handleLogin} text="submit" />
+        </View>
+      </View>
+      <View style={{ justifyContent: "center", flexDirection: "row" }}>
+        <Text
+          style={{
+            color: "#2596be",
+            marginTop: 10,
+          }}
+        >
+          FORGOT PASSWORD
+        </Text>
+      </View>
 
-            <Text style={globalStyles.errorText}>{errors.email}</Text>
-            <TextInput
-              style={globalStyles.input}
-              onChangeText={handleChange("password")}
-              onBlur={handleBlur("password")}
-              value={values.password}
-              placeholder="Password"
-            />
-            <Text style={globalStyles.errorText}>{errors.password}</Text>
-
-            <View>
-              {/* {errors.email && errors.password && (
-                <FlatButton
-                  onPress={() => {
-                    handleSubmit;
-                  }}
-                  text="submit"
-                />
-              )} */}
-
-              <FlatButton
-                onPress={() => {
-                  handleSubmit;
-                  handleLogin;
-                }}
-                text="submit"
-              />
-            </View>
-          </View>
-          <View style={{ justifyContent: "center", flexDirection: "row" }}>
-            <Text
-              style={{
-                color: "#2596be",
-                marginTop: 10,
-              }}
-            >
-              FORGOT PASSWORD
-            </Text>
-          </View>
-
-          <View
+      <View
+        style={{
+          flexDirection: "row",
+          marginTop: 35,
+          justifyContent: "center",
+        }}
+      >
+        <Text>New User?</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Register"), console.log(errors.email);
+          }}
+        >
+          <Text
             style={{
-              flexDirection: "row",
-              marginTop: 35,
-              justifyContent: "center",
+              color: "#2596be",
+              marginLeft: 8,
             }}
           >
-            <Text>New User?</Text>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Register"), console.log(errors.email);
-              }}
-            >
-              <Text
-                style={{
-                  color: "#2596be",
-                  marginLeft: 8,
-                }}
-              >
-                Sign Up
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
-    </Formik>
+            Sign Up
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 

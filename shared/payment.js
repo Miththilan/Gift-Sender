@@ -9,7 +9,7 @@ export default function payment(props) {
       <Text style={styles.heading}>Add Your Credit and debit Cards</Text>
       <View style={{ flexDirection: "row" }}>
         <Image
-          source={require("../assets/images/1.jpg")}
+          source={require("../assets/images/card.jpg")}
           style={styles.cardImage}
         />
         <View style={{ marginTop: 30, marginLeft: 30 }}>

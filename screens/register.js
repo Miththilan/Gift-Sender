@@ -14,14 +14,19 @@ import FlatButton from "../shared/button.js";
 
 const reviewSchema = yup.object({
   email: yup.string().email("Invalid email").required().min(4),
-  password: yup.string().required().min(8),
+  password: yup.string().required("Required"),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Required"),
+  phone: yup.string().required("Required"),
 });
 // const pressHandler = () => {
 //   navigation.navigate("ReviewDetails");
 // };
 export const Register = ({ addReview, navigation }) => (
   <Formik
-    initialValues={{ name: "", phone: "", email: "", password: "", adress: "" }}
+    initialValues={{ name: "", phone: "", email: "", password: "" }}
     validationSchema={reviewSchema}
     onSubmit={(values, actions) => {
       addReview(values);
@@ -56,7 +61,7 @@ export const Register = ({ addReview, navigation }) => (
             value={values.email}
             placeholder="Email"
           />
-          <Text style={globalStyles.errorText}>{errors.password}</Text>
+          <Text style={globalStyles.errorText}>{errors.email}</Text>
 
           <TextInput
             style={globalStyles.input}
@@ -74,7 +79,9 @@ export const Register = ({ addReview, navigation }) => (
             value={values.password}
             placeholder="Password"
           />
-          <Text style={globalStyles.errorText}>{errors.password}</Text>
+          <Text style={globalStyles.errorText}>
+            {errors.passwordConfirmation}
+          </Text>
 
           <View>
             <FlatButton

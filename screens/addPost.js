@@ -39,11 +39,13 @@ export const AddPost = ({ addReview, navigation }) => (
     }}
   >
     {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
-      <View style={{ marginTop: 60 }}>
-        <Image
-          source={require("../assets/images/1.jpg")}
-          style={{ width: 200, height: 90 }}
-        />
+      <View style={{ marginTop: 30 }}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+          <Image
+            source={require("../assets/images/791768-middle.png")}
+            style={{ width: 200, height: 80 }}
+          />
+        </View>
         <View style={styles.inputContainer}>
           <TextInput
             style={globalStyles.input}
