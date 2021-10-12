@@ -16,7 +16,7 @@ const RootDrawerNavigator = createDrawerNavigator(
       screen: AboutStack,
     },
 
-    contentComponent: () => (
+    Logout: () => (
       <View style={{ flex: 1 }}>
         {/* <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}> */}
         {/* <DrawerItems {...props} /> */}

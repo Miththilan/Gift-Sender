@@ -41,7 +41,7 @@ const screens = {
   ReviewDetails: {
     screen: ReviewDetails,
     navigationOptions: {
-      title: "Review Details",
+      title: "Product View",
       //   headerStyle: {
       //     backgroundColor: "#eee",
       //   },

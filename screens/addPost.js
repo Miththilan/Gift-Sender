@@ -12,7 +12,8 @@ import { Formik } from "formik";
 import { globalStyles } from "../styles/global";
 import * as yup from "yup";
 import FlatButton from "../shared/button.js";
-import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+// import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+// import { auth } from "../firebase/firebase";
 
 const reviewSchema = yup.object({
   quality: yup.string(),

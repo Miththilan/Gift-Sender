@@ -90,7 +90,7 @@ export function ReviewForm({ addReview, navigation }) {
         <Text>New User?</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Register"), console.log(errors.email);
+            navigation.navigate("Register");
           }}
         >
           <Text

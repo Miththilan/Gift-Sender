@@ -74,10 +74,10 @@ export const Register = ({ addReview, navigation }) => (
 
           <TextInput
             style={globalStyles.input}
-            onChangeText={handleChange("password")}
-            onBlur={handleBlur("password")}
-            value={values.password}
-            placeholder="Password"
+            onChangeText={handleChange("passwordConfirmation")}
+            onBlur={handleBlur("passwordConfirmation")}
+            value={values.passwordConfirmation}
+            placeholder=" ConfirmsPassword"
           />
           <Text style={globalStyles.errorText}>
             {errors.passwordConfirmation}
@@ -87,7 +87,7 @@ export const Register = ({ addReview, navigation }) => (
             <FlatButton
               onPress={() => {
                 handleSubmit;
-                // navigation.navigate("Home");
+                navigation.navigate("ReviewForm");
               }}
               text="submit"
             />

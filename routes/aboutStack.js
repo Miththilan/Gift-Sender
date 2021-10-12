@@ -9,7 +9,7 @@ const screens = {
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => (
-          <Header navigation={navigation} title="about Game Zone" />
+          <Header navigation={navigation} title="about GiftSender" />
         ),
       };
     },
@@ -20,7 +20,7 @@ const AboutStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
     headerTintColor: "#444",
     headerStyle: {
-      backgroundColor: "#eee",
+      backgroundColor: "#0c70ab",
       height: 65,
     },
   },
